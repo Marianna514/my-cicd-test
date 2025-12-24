@@ -29,4 +29,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Deploy to staging
-        run: echo "Этап DEPLOY: Развёртывание на staging..."
+        run: echo "Этап DEPLOY:Развёртывание на staging..."
