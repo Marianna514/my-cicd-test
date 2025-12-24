@@ -1,36 +1,29 @@
 name: CI/CD Pipeline
 
-on: [push] 
+on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Run build step
-      run: echo "Этап BUILD: Приложение собирается..."
+    - uses: actions/checkout@v4
+    - run: echo "Этап BUILD: Приложение собирается..."
 
   test:
     runs-on: ubuntu-latest
-    needs: build 
+    needs: build
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-    - name: Run tests
-      run: |
+    - uses: actions/checkout@v4
+    - run: |
         echo "Этап TEST: Запускаются тесты..."
         python -c "print('Все тесты прошли успешно')"
 
   deploy:
     runs-on: ubuntu-latest
-    needs: test 
+    needs: test
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-    - name: Deploy to staging
-      run: echo "Этап DEPLOY: Развёртывание на staging..."
+    - uses: actions/checkout@v4
+    - run: echo "Этап DEPLOY: Развёртывание на staging..."
