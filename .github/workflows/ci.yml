@@ -23,7 +23,7 @@ jobs:
         shell: cmd
         run: |
           echo "Этап TEST выполняется на ВАШЕМ компьютере"
-          python --version || echo "Python не установлен"
+          python --version 2>nul || (echo "Python не установлен" && exit 0)
           echo "Симуляция тестов..."
 
   deploy:
